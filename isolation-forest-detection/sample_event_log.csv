@@ -1,0 +1,4 @@
+facilityId,event_start,event_end,event_type,magnitude
+68f4851d-4959-49b6-96a1-63d80c816ed3,2025-07-15 00:00:00 UTC,2025-08-31 23:59:59 UTC,Production_Ramp_Up,1.4
+bf2278d8-0d33-4e28-a55e-ad3c1537af7e,2025-04-01 00:00:00 UTC,2025-04-07 23:59:59 UTC,Maintenance_Shutdown,0.1
+4f4bf05a-0a52-48db-b66d-3b3da6b23619,2025-01-01 00:00:00 UTC,2025-03-31 23:59:59 UTC,Capacity_Increase,1.5
