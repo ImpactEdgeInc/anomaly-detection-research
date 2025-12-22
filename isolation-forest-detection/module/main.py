@@ -1,4 +1,5 @@
 from anomaly_detect import AnomalyDetector
+import config
 
 def main():
     detector = AnomalyDetector()
@@ -17,7 +18,7 @@ def main():
     print(f"Detection complete. Total anomalies found: {len(anomalies)}")
     
     # Export or alert
-    anomalies.to_csv("detected_anomalies.csv", index=False)
+    anomalies.to_csv(config.OUTPUT_FILE, index=False)
     print("Results saved to detected_anomalies.csv")
 
 if __name__ == "__main__":

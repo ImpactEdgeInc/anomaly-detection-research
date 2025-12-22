@@ -36,12 +36,29 @@ class AnomalyDetector:
         ])
 
     def fetch_data(self):
-        """Connects to DB and returns a dataframe."""
-        conn = psycopg2.connect(**config.DB_CONFIG)
-        query = config.TABLE_QUERY
-        df = pd.read_sql(query, conn)
-        conn.close()
-        return df
+
+        source = config.DATA_SOURCE
+        
+        if source == 'db':
+            print("Fetching from Database...")
+            """Connects to DB and returns a dataframe."""
+            conn = psycopg2.connect(**config.DB_CONFIG)
+            query = config.TABLE_QUERY
+            df = pd.read_sql(query, conn)
+            conn.close()
+            return df
+            
+        elif source == 'csv':
+            print(f"Reading CSV from {config.CSV_PATH}...")
+            return pd.read_csv(config.CSV_PATH)
+            
+        elif source == 'json':
+            print(f"Reading JSON from {config.JSON_PATH}...")
+            return pd.read_json(config.JSON_PATH, orient=config.JSON_ORIENT)
+            
+        else:
+            raise ValueError(f"Unsupported data source: {source}")
+        
 
     def engineer_features(self, df):
         """Standardizes data cleaning steps."""
@@ -54,7 +71,7 @@ class AnomalyDetector:
 
     def run_detection(self, df):
         """Fits the model and applies dynamic rolling thresholds."""
-        features = config.NUMERICAL_FEATURES + config.CATEGORICAL_FEATURES
+        features = config.NUMERICAL_FEATURES + config.CATEGORICAL_FEATURES + ['month_sin', 'month_cos']
         X = df[features]
 
         # Fit and get raw scores
