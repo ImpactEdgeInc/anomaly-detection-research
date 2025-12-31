@@ -5,7 +5,7 @@ load_dotenv(dotenv_path='data/database.env')
 
 # Choice of: 'db', 'csv', or 'json'
 # For loading from a database, .csv file, or .json file respectively.
-DATA_SOURCE = 'csv' 
+DATA_SOURCE = 'db' 
 
 # Database Config
 DB_CONFIG = {
@@ -41,4 +41,4 @@ NUMERICAL_FEATURES = ['co2e', 'ch4', 'n2o', 'ef', 'co2']
 CATEGORICAL_FEATURES = ['facilityId', 'fuelHint']
 
 # Name of output file
-OUTPUT_FILE = "detected_anomalies.csv"
+OUTPUT_FILE = "output/detected_anomalies.csv"
