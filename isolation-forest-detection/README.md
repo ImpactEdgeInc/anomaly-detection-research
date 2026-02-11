@@ -1,3 +1,7 @@
 The requirements to run the contents of the folder are the same as in the main `anomaly-detection-research` folder.
 
 The `module` folder contains the modularized files that allow you to run the anomaly detection code on a submitted file or table, and is probably what you are looking for. The rest of this folder contains notebooks that test the application of this code on certain tables, and include additional features that did not end up being used in the module for various reasons.
+
+- The `stationary-combustion-anomalies`, `purchased-electricity-anomalies`, and `waste-generation-anomalies` notebooks test our anomaly detection model on their respective reports (implied through their name), along with some additional features that were not implemented in the module but could be useful for future research purposes as a reference.
+- The `sample_event_log.csv` and `empty_event_log.csv` files are used for the **event log implementation** in these notebooks, which allows us to note down significant events that would affect production (i.e.: anything that would boost or reduce it) and have our model account for the periods of time when production may have changed.
+- Also make sure to modify the `database.env` with your database details before running the notebooks. `DB_NAME` refers to the database's name, `DB_USER` and `DB_PASS` refer to username and password, `HOST` and `PORT` are self-explanatory.
